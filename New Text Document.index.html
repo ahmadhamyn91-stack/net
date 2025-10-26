@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ku" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="پەڕەیەکی تایبەت بە هاوڵاتیانی عێراق">
+<meta name="keywords" content="عێراق, کوردستان, بەغدا, هەولێر">
+<title>پەڕەی عێراقی - بەخێربێیت</title>
+<style>
+:root {
+--iraq-red: #ce1126;
+--iraq-black: #000000;
+--iraq-white: #ffffff;
+--text-color: #333333;
+}
+
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+background: linear-gradient(135deg, var(--iraq-red), var(--iraq-white), var(--iraq-black));
+color: var(--text-color);
+min-height: 100vh;
+padding: 20px;
+line-height: 1.6;
+}
+
+.container {
+background: rgba(255, 255, 255, 0.98);
+padding: 40px;
+border-radius: 25px;
+box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+margin: 20px auto;
+max-width: 900px;
+text-align: center;
+border: 3px solid var(--iraq-red);
+}
+
+.flag-header {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 20px;
+margin-bottom: 30px;
+flex-wrap: wrap;
+}
+
+.flag {
+font-size: 100px;
+animation: bounce 3s ease-in-out infinite;
+}
+
+.title-section h1 {
+color: var(--iraq-red);
+font-size: 2.8em;
+margin-bottom: 10px;
+text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.datetime {
+background: linear-gradient(135deg, var(--iraq-red), var(--iraq-black));
+color: white;
+padding: 20px;
+border-radius: 15px;
+margin: 25px 0;
+font-size: 1.3em;
+box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.info-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 20px;
+margin: 30px 0;
+}
+
+.info-card {
+background: var(--iraq-white);
+padding: 25px;
+border-radius: 15px;
+box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+border-top: 5px solid var(--iraq-red);
+transition: transform 0.3s ease;
+}
+
+.info-card:hover {
+transform: translateY(-5px);
+}
+
+.cities-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+gap: 15px;
+margin: 25px 0;
+}
+
+.city-card {
+background: white;
+padding: 20px 15px;
+border-radius: 12px;
+box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+cursor: pointer;
+transition: all 0.3s ease;
+border: 2px solid transparent;
+}
+
+.city-card:hover {
+background: var(--iraq-red);
+color: white;
+transform: scale(1.05);
+border-color: var(--iraq-black);
+}
+
+.weather-info {
+background: linear-gradient(135deg, #87CEEB, #4682B4);
+color: white;
+padding: 20px;
+border-radius: 15px;
+margin: 20px 0;
+}
+
+.footer {
+margin-top: 40px;
+padding-top: 20px;
+border-top: 2px solid var(--iraq-red);
+color: var(--iraq-black);
+font-weight: bold;
+}
+
+@keyframes bounce {
+0%, 100% { transform: translateY(0) rotate(0deg); }
+25% { transform: translateY(-10px) rotate(2deg); }
+50% { transform: translateY(-5px) rotate(-2deg); }
+75% { transform: translateY(-8px) rotate(1deg); }
+}
+
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(20px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+animation: fadeIn 1s ease-out;
+}
+
+/* بۆ ئەو کۆمپیوتەرانەی کە بچووکن */
+@media (max-width: 768px) {
+.container {
+padding: 20px;
+margin: 10px;
+}
+
+.flag {
+font-size: 70px;
+}
+
+.title-section h1 {
+font-size: 2em;
+}
+
+.cities-grid {
+grid-template-columns: repeat(2, 1fr);
+}
+}
+
+@media (max-width: 480px) {
+.cities-grid {
+grid-template-columns: 1fr;
+}
+
+.flag-header {
+flex-direction: column;
+gap: 10px;
+}
+}
+</style>
+</head>
+<body>
+<div class="container fade-in">
+<div class="flag-header">
+<div class="flag">🇮🇶</div>
+<div class="title-section">
+<h1>بەخێربێیت بۆ پەڕەکەم</h1>
+<p><strong>ئەم پەڕەیە تایبەتە بە هاوڵاتیانی عێراق</strong></p>
+</div>
+</div>
+
+<div class="datetime">
+<div>📅 ڕۆژی ئەمرۆ: <span id="current-date"></span></div>
+<div>🕒 کاتی بەغدا: <span id="current-time"></span></div>
+<div>🌍 کۆدی وڵات: IQ</div>
+</div>
+
+<div class="info-grid">
+<div class="info-card">
+<h3>🏥 سەلامەتی</h3>
+<p>بە سەلامەتی بمێنەوە و ڕێنماییەکانی تەندروستی بەدوادا بکە</p>
+</div>
+
+<div class="info-card">
+<h3>🎯 مەبەست</h3>
+<p>ئەم پەڕەیە بۆ یارمەتیدانی هاوڵاتیانی عێراق دروست کراوە</p>
+</div>
+
+<div class="info-card">
+<h3>📞 پەیوەندی</h3>
+<p>ئیمەیڵ: example@iraq.iq<br>مۆبایل: +964 XXX XXX XXXX</p>
+</div>
+</div>
+
+<h2 style="color: var(--iraq-red); margin: 30px 0 20px 0;">شارە گرنگەکانی عێراق</h2>
+<div class="cities-grid">
+<div class="city-card" data-city="بەغدا">🏙️ بەغدا</div>
+<div class="city-card" data-city="هەولێر">🏔️ هەولێر</div>
+<div class="city-card" data-city="بەسرە">🌊 بەسرە</div>
+<div class="city-card" data-city="مووسڵ">🏛️ مووسڵ</div>
+<div class="city-card" data-city="کەرکووک">🛢️ کەرکووک</div>
+<div class="city-card" data-city="سلێمانی">⛰️ سلێمانی</div>
+<div class="city-card" data-city="نەجەف">🕌 نەجەف</div>
+<div class="city-card" data-city="کەربەلا">⚫ کەربەلا</div>
+</div>
+
+<div class="weather-info">
+<h3>🌤️ کەش و هەوا</h3>
+<p id="weather-text">کەش و هەوای ئەمڕۆ بۆ عێراق: ڕوون و گەرم</p>
+<p>پلەی گەرمی: <span id="temperature">25°C</span></p>
+</div>
+
+<div class="info-card">
+<h3>📊 زانستیاری عێراق</h3>
+<p>• ژمارەی دانیشتووان: نزیکەی ٤٠ ملیۆن<br>
+• پایتەخت: بەغدا<br>
+• زمانە فەرمییەکان: عەرەبی و کوردی<br>
+• دراو: دیناری عێراقی (IQD)</p>
+</div>
+
+<div class="footer">
+<p>© ٢٠٢٤ پەڕەی عێراقی - هەموو مافەکان پارێزراوە</p>
+<p>ئەم پەڕەیە بە زمانی کوردی نووسراوە</p>
+</div>
+</div>
+
+<script>
+// نیشاندانی ڕێکەوت و کاتی عێراق
+function updateDateTime() {
+const now = new Date();
+const options = {
+year: 'numeric',
+month: 'long',
+day: 'numeric',
+weekday: 'long',
+timeZone: 'Asia/Baghdad'
+};
+
+const dateString = now.toLocaleDateString('ku-IQ', options);
+const timeString = now.toLocaleTimeString('ku-IQ', {
+timeZone: 'Asia/Baghdad',
+hour: '2-digit',
+minute: '2-digit',
+second: '2-digit',
+hour12: true
+});
+
+document.getElementById('current-date').textContent = dateString;
+document.getElementById('current-time').textContent = timeString;
+}
+
+// زیادکردنی کاریگەری کلیک بەسەر شارەکان
+document.querySelectorAll('.city-card').forEach(city => {
+city.addEventListener('click', function() {
+const cityName = this.getAttribute('data-city');
+
+// زیادکردنی کاریگەری ڕەنگاوڕەنگ
+this.style.background = getRandomColor();
+this.style.color = 'white';
+this.style.fontWeight = 'bold';
+
+// نیشاندانی نامەی شارەکە
+alert(`تۆ کلیکت لەسەر ${cityName} کرد! 🎉`);
+
+// گەڕاندنەوەی ڕەنگی ئاسایی دوای کەمێک کات
+setTimeout(() => {
+this.style.background = '';
+this.style.color = '';
+this.style.fontWeight = '';
+}, 2000);
+});
+});
+
+// فەنکشنی بۆ دەستکەوتنی ڕەنگی هەڕەمەکی
+function getRandomColor() {
+const colors = ['#ce1126', '#000000', '#2E8B57', '#4682B4', '#DA70D6', '#FF6347'];
+return colors[Math.floor(Math.random() * colors.length)];
+}
+
+// نوێکردنەوەی کەش و هەوا
+function updateWeather() {
+const temperatures = ['22°C', '25°C', '28°C', '30°C', '26°C', '24°C'];
+const weatherConditions = ['ڕوون', 'هەوراو', 'باران', 'گەرم', 'سارد'];
+
+const randomTemp = temperatures[Math.floor(Math.random() * temperatures.length)];
+const randomCondition = weatherConditions[Math.floor(Math.random() * weatherConditions.length)];
+
+document.getElementById('temperature').textContent = randomTemp;
+document.getElementById('weather-text').textContent =
+`کەش و هەوای ئەمڕۆ بۆ عێراق: ${randomCondition}`;
+}
+
+// دەستپێکردنی فەنکشنەکان
+updateDateTime();
+updateWeather();
+setInterval(updateDateTime, 1000);
+setInterval(updateWeather, 30000); // نوێکردنەوەی کەش و هەوا هەموو ٣٠ چرکە جارێک
+
+// زیادکردنی کاریگەری فەدێن ئین بۆ هاتنە ناوەوە
+document.addEventListener('DOMContentLoaded', function() {
+const elements = document.querySelectorAll('.fade-in');
+elements.forEach((element, index) => {
+element.style.animationDelay = `${index * 0.2}s`;
+});
+});
+</script>
+</body>
+</html>
