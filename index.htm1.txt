@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ku">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>پەڕەیەکی سادە</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+text-align: center;
+padding: 50px;
+background-color: #f0f8ff;
+}
+</style>
+</head>
+<body>
+<h1>سڵاو! بەخێربێیت 🎉</h1>
+<p>ئەمە پەڕەیەکی سادەی تاقیکارییە</p>
+<p>ڕێکەوت: <span id="date"></span></p>
+
+<script>
+document.getElementById('date').textContent = new Date().toLocaleDateString('ku');
+</script>
+</body>
+</html>
